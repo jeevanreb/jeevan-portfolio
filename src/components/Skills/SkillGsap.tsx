@@ -36,19 +36,34 @@ export default function SkillGsap({ children }: { children: React.ReactNode }) {
                     });
                 });
             };
+// Entry animation (bottom → top)
+gsap.from([".skill-heading", ".skill-main"], {
+  y: 120,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power3.out",
+  stagger: 0.2,
+  scrollTrigger: {
+    trigger: "#skills",
+    start: "top 80%", // when section enters viewport
+    toggleActions: "play none none reverse",
+  },
+});
+            // Only pin on desktop (lg = 1024px+); tablet/mobile must scroll freely
+            const isDesktop = window.innerWidth >= 1024;
 
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    trigger: "#complete-banking-section",
+                    trigger: "#skills",
                     start: "top top",
                     end: "+=700%",
                     scrub: true,
-                    pin: true,
-                    anticipatePin: 1,
+                    pin: isDesktop,          // no pin on tablet / mobile
+                    // anticipatePin removed — causes touch-scroll hang on mobile/tablet
                     invalidateOnRefresh: true,
                     refreshPriority: -2,
                     onUpdate: (self) => {
-                        // Use ScrollTrigger progress instead of reading x from DOM
+                        if (!isDesktop) return; // skip tab animation on small screens
                         const rawIndex = self.progress * (totalTabs - 1);
                         const index = Math.round(rawIndex) + 1;
                         setActiveTab(Math.min(index, totalTabs));

@@ -10,10 +10,10 @@ import "swiper/css/pagination";
 // Mobile Component
 const SkillSwipper = ({ data }: { data: any[] }) => {
     return (
-        <div className="mx-auto h-screen block bg-black max-w-md px-4 z-70 lg:hidden">
+        <div className="mx-auto h-screen block bg-black px-4 relative z-70 lg:hidden">
             <div className="pt-5 text-center sm:mb-12">
-                <h1 className="inline-block bg-gradient-to-r from-[#FF7A3A] to-[#07091A] bg-clip-text text-3xl font-semibold text-transparent md:text-[48px]">
-                    Technical Skills
+                <h1 className="inline-block bg-gradient-to-r from-white to-orange-400 bg-clip-text text-3xl font-semibold text-transparent md:text-[48px]">
+                     Skills
                 </h1>
             </div>
             <Swiper

@@ -7,21 +7,21 @@ import AboutGsap from "./AboutGsap";
 const About = () => {
   return (
     <AboutGsap>
-      <section className="w-full h-full md:h-screen bg-[#0e0e0e] text-white z-60 flex items-center">
+      <section id="about" className="relative w-full h-full lg:h-screen bg-[#0e0e0e] text-white z-60 flex items-center">
 
         {/* Inner Container */}
-        <div className="w-full max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+        <div className="w-full max-w-7xl mx-auto py-2 px-6 md:px-10 lg:px-16">
 
           {/* Header */}
-          <div className="mb-12 text-center md:text-left animate-up">
+          <div className="mb-12 mt-2 text-center md:text-left animate-up">
             <span className="text-[#FF7A3A] tracking-[0.2em] uppercase text-xs font-bold">
               The Human Behind The Code
             </span>
 
-            <h1 className="mt-4 text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tighter leading-tight">
-              Designing{" "}
+            <h1 className="mt-4 text-5xl md:text-4xl lg:text-6xl font-extrabold tracking-tighter leading-tight">
+              Crafting Digital{" "}
               <span className="bg-gradient-to-r from-[#FF7A3A] to-[#A78BFA] bg-clip-text bg-clip-text text-transparent">
-                Digital Soul.
+                Experiences with Soul.
               </span>
             </h1>
           </div>
@@ -37,7 +37,7 @@ const About = () => {
                 <div className="absolute -inset-6 bg-[#FF7A3A]/20 blur-3xl"></div>
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF7A3A]/10 to-[#8B5CF6]/10 rounded-xl"></div>
 
-                <div className="relative h-[420px] md:h-[480px] rounded-xl overflow-hidden border border-white/10 backdrop-blur-xl hidden md:block">
+                <div className="relative h-[420px] md:h-[480px] rounded-xl overflow-hidden border border-white/10 backdrop-blur-xl">
                   <Image
                     src={profile}
                     alt="Profile"

@@ -4,13 +4,18 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <section className="min-h-screen flex flex-col bg-black text-white overflow-x-hidden z-999">
-
+    <section id="contact" className="relative z-60 min-h-screen flex flex-col bg-black text-white overflow-x-hidden">
       {/* TOP MARQUEE — scrolls right to left */}
       <div className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden py-2 mt-5">
         <div className="top-marquee-track flex whitespace-nowrap">
           {Array(4)
-            .fill(["Innovation", "Precision", "Trust", "Collaborate", "Excellence"])
+            .fill([
+              "Innovation",
+              "Precision",
+              "Trust",
+              "Collaborate",
+              "Excellence",
+            ])
             .flat()
             .map((item, i) => (
               <React.Fragment key={i}>
@@ -42,7 +47,7 @@ const Contact = () => {
             </span>
             <a
               href="mailto:jeevanrebeiro@gmail.com"
-              className="md:col-span-9 mt-4 md:mt-0 text-2xl md:text-5xl font-bold hover:text-[#ff9159] transition break-all"
+              className="md:col-span-9 mt-4 md:mt-0 text-2xl md:text-3xl lg:text-5xl font-bold hover:text-[#ff9159] transition break-all"
             >
               jeevanrebeiro@gmail.com
             </a>
@@ -55,7 +60,7 @@ const Contact = () => {
             </span>
             <a
               href="tel:+919611716270"
-              className="md:col-span-9 mt-4 md:mt-0 text-2xl md:text-5xl font-bold hover:text-[#ff9159] transition"
+              className="md:col-span-9 mt-4 md:mt-0 text-2xl md:text-3xl lg:text-5xl font-bold hover:text-[#ff9159] transition"
             >
               +91 9611716270
             </a>
@@ -67,14 +72,29 @@ const Contact = () => {
               SOCIAL
             </span>
             <div className="md:col-span-9 mt-4 md:mt-0 flex flex-wrap gap-6 text-xl md:text-3xl font-bold">
-              <a href="#" className="hover:text-[#ff9159] transition">
+              <a
+                href="https://www.linkedin.com/in/jeevan-rebeiro-7682ba1ba/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#ff9159] transition"
+              >
                 LinkedIn ↗
               </a>
-              <a href="#" className="hover:text-[#ff9159] transition">
+              <a
+                href="https://github.com/jeevanreb"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#ff9159] transition"
+              >
                 GitHub ↗
               </a>
-              <a href="#" className="hover:text-[#ff9159] transition">
-                Dribbble ↗
+              <a
+                href="https://www.instagram.com/jeevan_rebeiro/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#ff9159] transition"
+              >
+                Instagram ↗
               </a>
             </div>
           </div>

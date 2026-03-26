@@ -1,123 +1,186 @@
-import React from "react";
-import Image from "next/image";
-import ExperienceGsap from "./Experience-gsap";
-import HolographicCard from "./HolographicCard";
 
+import ExperienceGsap from "./Experience-gsap";
 
 const Experience = () => {
-  const commandData = [
-    {
-      id: 1,
-      designation: "Frontend Developer",
-      period: "Jul 2025 - Present",
-      description:
-        "Leading development of scalable SaaS frontend features using React.js, TypeScript, and React Query. Implementing advanced GSAP animations, improving performance, and enhancing user engagement through interactive UI and optimized data handling.",
-    },
-    {
-      id: 2,
-      designation: "Software Engineer",
-      period: "Dec 2021 - Feb 2025",
-      description:
-        "Built and maintained high-performance frontend solutions aligned with business needs. Optimized API calls using debouncing, improved database efficiency with SQL, and collaborated with cross-functional teams to deliver scalable, production-ready features.",
-    },
-    {
-      id: 3,
-      designation: "Frontend Web Developer",
-      period: "Jun 2021 - Jul 2021 (Internship)",
-      description:
-        "Developed responsive and scalable web applications using React.js, JavaScript, HTML, and CSS. Focused on cross-browser compatibility, performance optimization, and delivering seamless user experiences across devices.",
-    },
-  ];
-
-  const leftTextData = [
-    "Swipewire Technologies",
-    "Arvi Info Solutions LLP",
-    "InMovidu Technologies",
-  ];
-
   return (
     <ExperienceGsap>
-      <section
-        id="offering-section-main"
-        className="z-60 flex min-h-screen w-full flex-col items-center justify-center bg-black py-20 lg:h-screen lg:py-12"
-      >
-        <div className="mb-8 text-center sm:mb-12">
-          <h2 className="w-max mx-auto border bg-gradient-to-r from-[#FF7A3A] to-[#07091A] bg-clip-text p-5 text-3xl font-semibold text-transparent md:text-[48px] animate-bounce">
-            Experience
-          </h2>
-        </div>
+      <main id="experience" className="relative z-60 bg-black text-white overflow-x-hidden">
+        {/* HERO */}
+        <section className="relative pt-10 pb-10 max-w-7xl mx-auto px-8 experience-hero">
+          {/* Background Text */}
+          <h3 className="absolute top-7 left-0 text-[14vw] font-black opacity-[0.04] pointer-events-none select-none">
+            EXPERIENCE
+          </h3>
 
-        <div className="hidden w-full items-center justify-between px-14 lg:flex">
-          {/* Left Text */}
-          <div className="z-0 flex h-[50vh] w-full flex-col justify-center md:mb-auto md:min-w-lg md:text-left">
-            {leftTextData?.map((text, index) => (
-              <React.Fragment key={index}>
-                <span
-                  key={index}
-                  className="offering-span max-w-3/4 border-b-2 border-black py-4 text-[22px] text-white/60 transition-all duration-300"
-                >
-                  {text}
-                </span>
-                <br />
-              </React.Fragment>
-            ))}
-          </div>
-
-          {/* Right Cards */}
-          <div
-            className="z-10 flex w-full flex-col items-center md:mt-10"
-            style={{
-              WebkitMaskImage: `
-    linear-gradient(to left, transparent, black var(--mask-stop, 10%)),
-    linear-gradient(to right, transparent, black var(--mask-stop, 4%))
-  `,
-              WebkitMaskComposite: "destination-in",
-              maskComposite: "intersect",
-            }}
-          >
-            <div className="relative h-[50vh] w-full overflow-hidden">
-              <div
-                id="cards-container"
-                className="flex h-full items-center gap-x-10"
-              >
-                {commandData.map((card) => (
-                  <HolographicCard key={card.id} card={card} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile View */}
-        <div className="flex w-full flex-col gap-8 px-6 pb-20 mt-8 lg:hidden">
-          {commandData.map((card, index) => (
-            <div
-              key={card.id}
-              className="mobile-card relative flex w-full flex-col justify-between rounded-2xl border border-white/20 p-6 backdrop-blur-xl"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(13, 13, 14, 0.95) 0%, rgba(255,140,66,0.8) 30%, rgba(106,90,205,0.7) 70%, rgba(13, 13, 14, 0.95) 100%)",
-              }}
-            >
-              <div className="flex flex-col gap-2">
-                <span className="text-sm font-semibold text-purple-400">
-                  {leftTextData[index]}
-                </span>
-                <h3 className="text-xl font-semibold tracking-wide text-white">
-                  {card.designation}
-                </h3>
-                <span className="text-xs font-medium uppercase tracking-widest text-white/60">
-                  {card.period}
-                </span>
-              </div>
-              <div className="my-4 h-[1px] w-full bg-gradient-to-r from-transparent via-white/30 to-transparent" />
-              <p className="text-sm leading-relaxed font-light text-white/80">
-                {card.description}
+          <div className="relative z-10 max-w-4xl">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="w-10 h-[1px] bg-orange-400"></div>
+              <p className="hero-label text-xs tracking-[0.4em] text-orange-400 uppercase">
+                The Professional Journey
               </p>
             </div>
-          ))}
-        </div>
-      </section>
+
+            <h2 className="text-[3rem] md:text-[7rem] lg:text-[8rem] leading-[0.85] font-black overflow-hidden">
+              <span className="block hero-line">WORK</span>
+              <span className="block hero-line bg-gradient-to-r from-white to-orange-400 bg-clip-text text-transparent">
+                EXPERIENCE
+              </span>
+            </h2>
+
+            <p className="mt-8 text-neutral-400 max-w-xl">
+              Building the next generation of digital products where{" "}
+              <span className="text-white">engineering meets artistry</span>.
+            </p>
+          </div>
+        </section>
+
+        {/* TIMELINE */}
+        <section className="max-w-7xl mx-auto px-8 space-y-20 experience-cards">
+          {/* ITEM 01 */}
+          <div className="relative grid lg:grid-cols-12 gap-10 experience-card">
+            {/* Number */}
+            <div className="hidden lg:block col-span-1">
+              <span className="text-[6rem] font-black text-white/10">01</span>
+            </div>
+
+            {/* Card */}
+            <div className="col-span-11">
+              <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent p-12 overflow-hidden group hover:-translate-y-2 transition duration-500">
+                {/* Glow */}
+                <div className="absolute right-0 top-0 w-[300px] h-full bg-orange-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
+
+                <div className="absolute top-6 right-6 border border-orange-400/30 text-orange-400 text-[10px] px-4 py-1 rounded-full tracking-widest">
+                  JUL 2025 - PRESENT
+                </div>
+
+                <h3 className="text-4xl md:text-5xl font-bold">
+                  SWIPEWIRE TECHNOLOGIES
+                </h3>
+
+                <p className="text-orange-400 mt-2 mb-10">Frontend Developer</p>
+
+                <div className="grid md:grid-cols-2 gap-10">
+                  {/* LEFT */}
+                  <div>
+                    <ul className="space-y-4 text-neutral-400 text-sm">
+                      <li>
+                        • Built scalable SaaS features improving data retrieval
+                        by 50%
+                      </li>
+                      <li>
+                        • Developed GSAP animations increasing engagement by 40%
+                      </li>
+                      <li>• Created SVG path & scroll-based storytelling UI</li>
+                      <li>
+                        • Improved performance, maintainability & architecture
+                      </li>
+                    </ul>
+
+                    <div className="flex gap-2 mt-6 flex-wrap">
+                      {["React.js", "Next.js", "TypeScript", "GSAP", "React Query"].map(
+                        (tech) => (
+                          <span
+                            key={tech}
+                            className="text-[10px] px-3 py-1 rounded-full border border-white/10 bg-white/5"
+                          >
+                            {tech}
+                          </span>
+                        ),
+                      )}
+                    </div>
+                  </div>
+
+                  {/* RIGHT - INNOVATION */}
+                  <div className="bg-orange-500/5 border border-orange-500/20 rounded-2xl p-6">
+                    <p className="text-white font-semibold mb-2">
+                      ✦ Innovation
+                    </p>
+                    <p className="text-neutral-400 text-sm">
+                      Delivered advanced GSAP-driven animations including
+                      sequence and SVG path animations, building highly
+                      interactive storytelling experiences with
+                      performance-optimized frontend architecture.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ITEM 02 */}
+          <div className="relative grid lg:grid-cols-12 gap-10 experience-card">
+            <div className="hidden lg:block col-span-1">
+              <span className="text-[6rem] font-black text-white/10">02</span>
+            </div>
+
+            <div className="col-span-11">
+              <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent p-12 overflow-hidden group hover:-translate-y-2 transition duration-500">
+                {/* Glow (same as Swipewire) */}
+                <div className="absolute right-0 top-0 w-[300px] h-full bg-orange-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
+
+                <div className="absolute top-6 right-6 border border-white/20 text-neutral-400 text-[10px] px-4 py-1 rounded-full">
+                  DEC 2021 - FEB 2025
+                </div>
+
+                <h3 className="text-4xl md:text-5xl font-bold">
+                  ARVI INFO SOLUTIONS
+                </h3>
+
+                <p className="text-neutral-400 mt-2 mb-10">Software Engineer</p>
+
+                <div className="grid md:grid-cols-2 gap-10">
+                  {/* LEFT */}
+                  <ul className="space-y-4 text-neutral-400 text-sm">
+                    <li>
+                      • Built responsive UI with React.js ensuring cross-browser
+                      compatibility
+                    </li>
+                    <li>
+                      • Optimized API calls using debouncing reducing calls by
+                      30%
+                    </li>
+                    <li>
+                      • Improved database performance with optimized SQL queries
+                    </li>
+                    <li>
+                      • Mentored junior developers and introduced modern
+                      practices
+                    </li>
+                  </ul>
+
+                  {/* RIGHT - INNOVATION */}
+                  <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-6">
+                    <p className="text-white font-semibold mb-2">
+                      ✦ Innovation
+                    </p>
+                    <p className="text-neutral-400 text-sm">
+                      Improved system performance through API optimization and
+                      efficient data handling, while introducing modern frontend
+                      practices and mentoring developers to scale engineering
+                      quality.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="text-center py-10">
+          {/* <h2 className="text-4xl md:text-6xl font-black mb-6">
+          LET&apos;S BUILD SOMETHING
+        </h2> */}
+
+          <button className="border-b-2 border-orange-400 pb-2">
+            Available for opportunities
+          </button>
+
+          {/* <button className="border-b-2 border-orange-400 pb-2">
+          START A PROJECT →
+        </button> */}
+        </section>
+      </main>
     </ExperienceGsap>
   );
 };

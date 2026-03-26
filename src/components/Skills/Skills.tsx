@@ -80,19 +80,21 @@ const Skills = () => {
   ];
 
   return (
-    <>
       <SkillGsap>
+        <section id="skills" className="w-full bg-black text-white relative z-60">
         {/* 
         ✅ Kept: hidden lg:block — mobile uses a separate swiper component
         ✅ Kept: h-screen, overflow-clip, overflow-x-hidden — matches original
         ✅ Kept: flex + items-center justify-center layout
       */}
         <section
-          id="complete-banking-section"
+          id="skills"
           className="hidden z-60 h-screen w-full items-center justify-center overflow-clip overflow-x-hidden bg-black text-white lg:block"
         >
+                            <div className="absolute top-[10%] -right-[15%] h-[20%] w-[20%] rounded-full bg-gradient-to-r from-[#FF7A3A] to-[#07091A] opacity-60 blur-3xl" />
+
           <div className="text-center sm:mb-12">
-            <h1 className="inline-block bg-gradient-to-r from-[#FF7A3A] to-[#07091A] mt-4 bg-clip-text text-3xl font-semibold text-transparent md:text-[48px]">
+            <h1 className="inline-block bg-gradient-to-r from-white to-orange-400 mt-4 bg-clip-text text-3xl font-semibold text-transparent md:text-[48px] skill-heading">
               Technical Skills
             </h1>
           </div>
@@ -112,7 +114,7 @@ const Skills = () => {
               maskComposite: "intersect",
               background: `url(${outsideLine.src}) center/contain no-repeat`,
             }}
-            className="ml-0 h-[701px] w-[1248px] scale-90 overflow-clip rounded-2xl lg:ml-0 xl:ml-20 xl:scale-100"
+            className="skill-main  ml-0 h-[701px] w-[1248px] scale-90 overflow-clip rounded-2xl lg:ml-0 xl:ml-20 xl:scale-100"
           >
             {/* Tabs */}
             <div className="relative flex w-full">
@@ -185,9 +187,10 @@ const Skills = () => {
             </div>
           </section>
         </section>
+                                <SkillSwipper data={data} />
+
+</section>
       </SkillGsap>
-      <SkillSwipper data={data} />
-    </>
   );
 };
 

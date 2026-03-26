@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Overlay from "./Overlay";
+import LoadingScreen from "./LoadingScreen";
 
 const FRAME_COUNT = 120; // 0 to 119 bounds
 
@@ -14,7 +15,17 @@ export default function ScrollyCanvas() {
   const imagesRef = useRef<HTMLImageElement[]>([]);
   const frameRef = useRef({ index: 0 });
 
+  const [loadProgress, setLoadProgress] = useState(0);
+  const [loadComplete, setLoadComplete] = useState(false);
+  const [loaderDone, setLoaderDone] = useState(false);
+
+  const handleLoaderDone = useCallback(() => {
+    setLoaderDone(true);
+  }, []);
+
   useGSAP(() => {
+    // Ensure GSAP does NOT override native touch scrolling on mobile
+    ScrollTrigger.config({ ignoreMobileResize: true });
     gsap.registerPlugin(ScrollTrigger);
 
     const canvas = canvasRef.current;
@@ -33,7 +44,6 @@ export default function ScrollyCanvas() {
       const imgW = img.width;
       const imgH = img.height;
 
-      // Ensure proper scaling and centering
       const scale = Math.max(cw / imgW, ch / imgH);
       const w = imgW * scale;
       const h = imgH * scale;
@@ -46,8 +56,14 @@ export default function ScrollyCanvas() {
     };
 
     const resizeCanvas = () => {
+      // On mobile, visualViewport gives the true visible height
+      // (excludes browser chrome / address bar) preventing ScrollTrigger mismatches
+      const vh =
+        (typeof window !== "undefined" && window.visualViewport)
+          ? window.visualViewport.height
+          : window.innerHeight;
       canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = vh;
       renderFrame(frameRef.current.index);
     };
 
@@ -63,11 +79,14 @@ export default function ScrollyCanvas() {
       img.src = `/sequence/frame_${paddedIndex}_delay-0.066s.webp`;
       img.onload = () => {
         loadedImages++;
+        const pct = Math.round((loadedImages / FRAME_COUNT) * 100);
+        setLoadProgress(pct);
+
         if (loadedImages === 1) {
-          // Render first available frame
           renderFrame(0);
         }
         if (loadedImages === FRAME_COUNT) {
+          setLoadComplete(true);
           ScrollTrigger.refresh();
         }
       };
@@ -75,14 +94,14 @@ export default function ScrollyCanvas() {
     }
 
     // GSAP ScrollTrigger syncing scroll to image index
-    const scrollTrigger = ScrollTrigger.create({
+    ScrollTrigger.create({
       trigger: containerRef.current,
       start: "top top",
-      end: "+=400%", // 4 screens worth of scroll duration
+      end: "+=400%",
       pin: true,
       pinSpacing: true,
-      anticipatePin: 1,
-      scrub: 1, // Soft scrubbing for smoother look
+      // anticipatePin removed — it intercepts touch events on mobile causing a "hang"
+      scrub: 1,
       onUpdate: (self) => {
         const progress = Math.min(Math.max(self.progress, 0), 1);
         const nextFrame = Math.round(progress * (FRAME_COUNT - 1));
@@ -94,15 +113,34 @@ export default function ScrollyCanvas() {
       },
     });
 
+    // Also listen to visualViewport resize (mobile address bar show/hide)
+    const vpResizeHandler = () => resizeCanvas();
+    window.visualViewport?.addEventListener("resize", vpResizeHandler);
+
     return () => {
       window.removeEventListener("resize", resizeCanvas);
+      window.visualViewport?.removeEventListener("resize", vpResizeHandler);
     };
   }, { scope: containerRef });
 
   return (
-    <div ref={containerRef} className="scrolly-container relative w-full h-screen bg-[#121212] overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover z-0" />
-      <Overlay />
-    </div>
+    <>
+      {/* Loading Screen — sits above everything until done */}
+      {!loaderDone && (
+        <LoadingScreen
+          progress={loadProgress}
+          isComplete={loadComplete}
+          onDone={handleLoaderDone}
+        />
+      )}
+
+      <div
+        ref={containerRef}
+        className="scrolly-container relative w-full h-screen bg-[#121212] overflow-hidden"
+      >
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover z-0" />
+        <Overlay />
+      </div>
+    </>
   );
 }
