@@ -16,7 +16,7 @@ export default function Header() {
         {/* Favicon / Logo */}
         <div className="flex items-center">
           <Image
-            src="/jeev"
+            src="/jeev.jpg"
             alt="Jeevan Rebeiro"
             width={34}
             height={34}
