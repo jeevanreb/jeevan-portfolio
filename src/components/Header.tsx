@@ -14,7 +14,7 @@ export default function Header() {
       <header className="bg-black/30 backdrop-blur-md border border-white/10 rounded-full py-2.5 px-6 flex justify-between items-center shadow-2xl">
 
         {/* Favicon / Logo */}
-        <div className="flex items-center">
+        <div className="flex items-center hidden md:block">
           <Image
             src="/jeev.jpg"
             alt="Jeevan Rebeiro"

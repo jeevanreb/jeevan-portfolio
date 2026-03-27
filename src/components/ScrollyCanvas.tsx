@@ -76,20 +76,30 @@ export default function ScrollyCanvas() {
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
       const paddedIndex = String(i).padStart(3, "0");
-      img.src = `/sequence/frame_${paddedIndex}_delay-0.066s.webp`;
-      img.onload = () => {
+      // Add q_auto,f_auto,w_1920 to Cloudinary URL for faster loading & compression
+      img.src = `https://res.cloudinary.com/dty6kbzpt/image/upload/q_auto,f_auto,w_1920/v1774608162/frame_${paddedIndex}_delay-0.066s.webp`;
+      
+      const handleImageReady = () => {
         loadedImages++;
         const pct = Math.round((loadedImages / FRAME_COUNT) * 100);
         setLoadProgress(pct);
 
-        if (loadedImages === 1) {
+        // Ensure we draw the first frame exactly when frame 0 is loaded, 
+        // to avoid a black screen if another frame loads before frame 0.
+        if (i === 0) {
           renderFrame(0);
         }
+        
         if (loadedImages === FRAME_COUNT) {
           setLoadComplete(true);
           ScrollTrigger.refresh();
+          // Render current index again just to be sure it's visible as soon as loader finishes
+          renderFrame(frameRef.current.index);
         }
       };
+
+      img.onload = handleImageReady;
+      img.onerror = handleImageReady; // Prevent loading screen from hanging if an image fails
       imagesRef.current.push(img);
     }
 

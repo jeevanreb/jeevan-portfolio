@@ -137,9 +137,9 @@ export default function LoadingScreen({
       </div>
 
       {/* Corner decoration */}
-      <div className="absolute bottom-8 left-8 text-[9px] uppercase tracking-[0.3em] text-white/15">
+      {/* <div className="absolute bottom-8 left-8 text-[9px] uppercase tracking-[0.3em] text-white/15">
         Portfolio — 2025
-      </div>
+      </div> */}
       <div className="absolute bottom-8 right-8 text-[9px] uppercase tracking-[0.3em] text-white/15">
         Full Stack Developer
       </div>
