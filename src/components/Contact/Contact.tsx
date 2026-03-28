@@ -41,7 +41,7 @@ const Contact = () => {
         {/* Contact Grid */}
         <div className="border-t border-white/10">
           {/* Email */}
-          <div className="grid md:grid-cols-12 py-10 border-b border-white/10 group hover:bg-white/5 transition">
+          <div className="grid md:grid-cols-12 py-14 md:py-10 border-b border-white/10 group hover:bg-white/5 transition">
             <span className="md:col-span-3 text-xs tracking-[0.3em] text-white/40 group-hover:text-[#ff9159]">
               E-MAIL
             </span>
@@ -54,7 +54,7 @@ const Contact = () => {
           </div>
 
           {/* Phone */}
-          <div className="grid md:grid-cols-12 py-10 border-b border-white/10 group hover:bg-white/5 transition">
+          <div className="grid md:grid-cols-12 py-14 md:py-10 border-b border-white/10 group hover:bg-white/5 transition">
             <span className="md:col-span-3 text-xs tracking-[0.3em] text-white/40 group-hover:text-[#ff9159]">
               PHONE
             </span>
@@ -67,7 +67,7 @@ const Contact = () => {
           </div>
 
           {/* Social */}
-          <div className="grid md:grid-cols-12 py-10 group hover:bg-white/5 transition">
+          <div className="grid md:grid-cols-12 py-14 md:py-10 group hover:bg-white/5 transition">
             <span className="md:col-span-3 text-xs tracking-[0.3em] text-white/40 group-hover:text-[#ff9159]">
               SOCIAL
             </span>
@@ -115,9 +115,8 @@ const Contact = () => {
             .map((item, i) => (
               <span
                 key={i}
-                className={`px-6 text-4xl md:text-6xl font-black uppercase ${
-                  item === "✦" ? "text-[#ff9159]" : "text-white/10"
-                }`}
+                className={`px-6 text-4xl md:text-6xl font-black uppercase ${item === "✦" ? "text-[#ff9159]" : "text-white/10"
+                  }`}
               >
                 {item}
               </span>

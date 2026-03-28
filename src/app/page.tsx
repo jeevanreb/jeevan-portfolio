@@ -1,11 +1,12 @@
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import ScrollyCanvas from "@/components/ScrollyCanvas";
-import Experience from "@/components/Experience/Experience";
-import Skills from "@/components/Skills/Skills";
-// import Projects from "@/components/About";
-import Contact from "@/components/Contact/Contact";
-import About from "@/components/About/About";
-import Pin from "@/components/Pin/Pin"
+import Pin from "@/components/Pin/Pin";
+
+const About = dynamic(() => import("@/components/About/About"));
+const Experience = dynamic(() => import("@/components/Experience/Experience"));
+const Skills = dynamic(() => import("@/components/Skills/Skills"));
+const Contact = dynamic(() => import("@/components/Contact/Contact"));
 export default function Home() {
   return (
     <main className="relative w-full min-h-screen bg-[#121212]">

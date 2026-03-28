@@ -13,7 +13,7 @@ const SkillSwipper = ({ data }: { data: any[] }) => {
         <div className="mx-auto h-screen block bg-black px-4 relative z-70 lg:hidden">
             <div className="pt-5 text-center sm:mb-12">
                 <h1 className="inline-block bg-gradient-to-r from-white to-orange-400 bg-clip-text text-3xl font-semibold text-transparent md:text-[48px]">
-                     Skills
+                    Skills
                 </h1>
             </div>
             <Swiper
@@ -34,7 +34,7 @@ const SkillSwipper = ({ data }: { data: any[] }) => {
 
                             {/* Image Header */}
                             {elem.img && (
-                                <div className="relative z-10 mb-2 flex justify-center h-[160px] w-full">
+                                <div className="relative z-10 mb-2 flex justify-center h-[250px] w-full">
                                     <Image src={elem.img} alt={elem.title} fill className="object-contain drop-shadow-2xl" />
                                 </div>
                             )}
@@ -49,7 +49,7 @@ const SkillSwipper = ({ data }: { data: any[] }) => {
                                 {elem.cards?.map((card: any) => (
                                     <div
                                         key={card.id}
-                                        className={`flex min-h-[90px] flex-col items-center justify-center rounded-xl p-3 shadow-md ${card.color || 'bg-gray-800'}`}
+                                        className={`flex min-h-[100px] flex-col items-center justify-center rounded-xl p-3 shadow-md ${card.color || 'bg-gray-800'}`}
                                     >
                                         <h4 className="text-center text-sm font-semibold text-white drop-shadow-md lg:text-base">
                                             {card.title}

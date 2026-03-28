@@ -39,17 +39,17 @@ const Experience = () => {
           {/* ITEM 01 */}
           <div className="relative grid lg:grid-cols-12 gap-10 experience-card">
             {/* Number */}
-            <div className="hidden lg:block col-span-1">
+            <div className="hidden lg:block lg:col-span-1">
               <span className="text-[6rem] font-black text-white/10">01</span>
             </div>
 
             {/* Card */}
-            <div className="col-span-11">
-              <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent p-12 overflow-hidden group hover:-translate-y-2 transition duration-500">
+            <div className="lg:col-span-11 flex justify-center">
+              <div className="relative w-full rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent p-6 sm:p-8 md:p-12 overflow-hidden group hover:-translate-y-2 transition duration-500 flex flex-col items-center text-center lg:items-start lg:text-left">
                 {/* Glow */}
                 <div className="absolute right-0 top-0 w-[300px] h-full bg-orange-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
 
-                <div className="absolute top-6 right-6 border border-orange-400/30 text-orange-400 text-[10px] px-4 py-1 rounded-full tracking-widest">
+                <div className="relative lg:absolute lg:top-6 lg:right-6 border border-orange-400/30 text-orange-400 text-[10px] px-4 py-1 rounded-full tracking-widest mb-6 lg:mb-0 inline-block">
                   JUL 2025 - PRESENT
                 </div>
 
@@ -59,7 +59,7 @@ const Experience = () => {
 
                 <p className="text-orange-400 mt-2 mb-10">Frontend Developer</p>
 
-                <div className="grid md:grid-cols-2 gap-10">
+                <div className="grid md:grid-cols-2 gap-10 mt-6 lg:mt-0 w-full text-left">
                   {/* LEFT */}
                   <div>
                     <ul className="space-y-4 text-neutral-400 text-sm">
@@ -76,7 +76,7 @@ const Experience = () => {
                       </li>
                     </ul>
 
-                    <div className="flex gap-2 mt-6 flex-wrap">
+                    <div className="flex gap-2 mt-6 flex-wrap justify-center lg:justify-start">
                       {["React.js", "Next.js", "TypeScript", "GSAP", "React Query"].map(
                         (tech) => (
                           <span
@@ -109,16 +109,16 @@ const Experience = () => {
 
           {/* ITEM 02 */}
           <div className="relative grid lg:grid-cols-12 gap-10 experience-card">
-            <div className="hidden lg:block col-span-1">
+            <div className="hidden lg:block lg:col-span-1">
               <span className="text-[6rem] font-black text-white/10">02</span>
             </div>
 
-            <div className="col-span-11">
-              <div className="relative rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent p-12 overflow-hidden group hover:-translate-y-2 transition duration-500">
+            <div className="lg:col-span-11 flex justify-center">
+              <div className="relative w-full rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent p-6 sm:p-8 md:p-12 overflow-hidden group hover:-translate-y-2 transition duration-500 flex flex-col items-center text-center lg:items-start lg:text-left">
                 {/* Glow (same as Swipewire) */}
                 <div className="absolute right-0 top-0 w-[300px] h-full bg-orange-500/10 blur-3xl opacity-0 group-hover:opacity-100 transition"></div>
 
-                <div className="absolute top-6 right-6 border border-white/20 text-neutral-400 text-[10px] px-4 py-1 rounded-full">
+                <div className="relative lg:absolute lg:top-6 lg:right-6 border border-white/20 text-neutral-400 text-[10px] px-4 py-1 rounded-full mb-6 lg:mb-0 inline-block">
                   DEC 2021 - FEB 2025
                 </div>
 
@@ -128,7 +128,7 @@ const Experience = () => {
 
                 <p className="text-neutral-400 mt-2 mb-10">Software Engineer</p>
 
-                <div className="grid md:grid-cols-2 gap-10">
+                <div className="grid md:grid-cols-2 gap-10 mt-6 lg:mt-0 w-full text-left">
                   {/* LEFT */}
                   <ul className="space-y-4 text-neutral-400 text-sm">
                     <li>

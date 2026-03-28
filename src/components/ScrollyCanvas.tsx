@@ -70,15 +70,19 @@ export default function ScrollyCanvas() {
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
+    // Determine optimal image width based on viewport
+    const imageWidth = window.innerWidth <= 768 ? "w_800" : "w_1920";
+
     // Preload image sequence into memory
     let loadedImages = 0;
     imagesRef.current = []; // Clear array for Dev mode Strict Mode double execution
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
       const paddedIndex = String(i).padStart(3, "0");
-      // Add q_auto,f_auto,w_1920 to Cloudinary URL for faster loading & compression
-      img.src = `https://res.cloudinary.com/dty6kbzpt/image/upload/q_auto,f_auto,w_1920/v1774608162/frame_${paddedIndex}_delay-0.066s.webp`;
-      
+      // Responsive Cloudinary URL for faster loading & compression on mobile
+      img.src = `https://res.cloudinary.com/dty6kbzpt/image/upload/q_auto,f_auto,${imageWidth}/v1774608162/frame_${paddedIndex}_delay-0.066s.webp`;
+      console.log("img.src--->", img.src)
+
       const handleImageReady = () => {
         loadedImages++;
         const pct = Math.round((loadedImages / FRAME_COUNT) * 100);
@@ -89,7 +93,7 @@ export default function ScrollyCanvas() {
         if (i === 0) {
           renderFrame(0);
         }
-        
+
         if (loadedImages === FRAME_COUNT) {
           setLoadComplete(true);
           ScrollTrigger.refresh();

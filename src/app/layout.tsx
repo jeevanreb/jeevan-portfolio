@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://jeevanportfolio.vercel.app"),
   title: "Jeevan Rebeiro | Full Stack Developer Portfolio",
   description:
     "Portfolio of Jeevan Rebeiro — Full Stack Developer specializing in React.js, Next.js, TypeScript, Node.js, and high-performance UI animations with GSAP. Crafting scalable, modern, and interactive web experiences.",

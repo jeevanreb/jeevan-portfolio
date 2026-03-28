@@ -20,6 +20,7 @@ export default function Header() {
             alt="Jeevan Rebeiro"
             width={34}
             height={34}
+            priority
             className="rounded-full object-cover border border-white/20"
           />
         </div>
