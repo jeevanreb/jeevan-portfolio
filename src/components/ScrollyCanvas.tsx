@@ -70,18 +70,14 @@ export default function ScrollyCanvas() {
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
 
-    // Determine optimal image width based on viewport
-    const imageWidth = window.innerWidth <= 768 ? "w_800" : "w_1920";
-
     // Preload image sequence into memory
     let loadedImages = 0;
     imagesRef.current = []; // Clear array for Dev mode Strict Mode double execution
     for (let i = 0; i < FRAME_COUNT; i++) {
       const img = new Image();
       const paddedIndex = String(i).padStart(3, "0");
-      // Responsive Cloudinary URL for faster loading & compression on mobile
-      img.src = `https://res.cloudinary.com/dty6kbzpt/image/upload/q_auto,f_auto,${imageWidth}/v1774608162/frame_${paddedIndex}_delay-0.066s.webp`;
-      console.log("img.src--->", img.src)
+      // Responsive Cloudinary URL using original resolution
+      img.src = `https://res.cloudinary.com/dty6kbzpt/image/upload/q_auto,f_auto/v1774608162/frame_${paddedIndex}_delay-0.066s.webp`;
 
       const handleImageReady = () => {
         loadedImages++;
@@ -150,7 +146,7 @@ export default function ScrollyCanvas() {
 
       <div
         ref={containerRef}
-        className="scrolly-container relative w-full h-screen bg-[#121212] overflow-hidden"
+        className="scrolly-container relative w-full h-[100dvh] bg-[#121212] overflow-hidden"
       >
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-cover z-0" />
         <Overlay />

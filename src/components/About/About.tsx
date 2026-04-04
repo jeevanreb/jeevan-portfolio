@@ -64,7 +64,7 @@ const About = () => {
                         Education
                       </p>
                       <p className="text-sm font-bold">
-                        bachelor of engineering (2021)
+                        Bachelor of Engineering (2021)
                       </p>
                     </div>
                   </div>
