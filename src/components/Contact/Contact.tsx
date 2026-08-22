@@ -7,7 +7,7 @@ const Contact = () => {
     <section id="contact" className="relative z-60 min-h-screen flex flex-col bg-black text-white overflow-x-hidden">
       {/* TOP MARQUEE — scrolls right to left */}
       <div className="relative left-1/2 -translate-x-1/2 w-screen overflow-hidden py-2 mt-5">
-        <div className="top-marquee-track flex whitespace-nowrap">
+        <div className="top-marquee-track whitespace-nowrap">
           {Array(4)
             .fill([
               "Innovation",
@@ -103,7 +103,7 @@ const Contact = () => {
 
       {/* BOTTOM MARQUEE — scrolls left to right */}
       <div className="w-full border-y border-white/10 py-6 overflow-hidden">
-        <div className="bottom-marquee-track flex whitespace-nowrap">
+        <div className="bottom-marquee-track whitespace-nowrap">
           {Array(3)
             .fill([
               "LET'S BUILD SOMETHING LEGENDARY",
@@ -115,48 +115,15 @@ const Contact = () => {
             .map((item, i) => (
               <span
                 key={i}
-                className={`px-6 text-4xl md:text-6xl font-black uppercase ${item === "✦" ? "text-[#ff9159]" : "text-white/10"
-                  }`}
+                className={`px-6 text-4xl md:text-6xl font-black uppercase ${
+                  item === "✦" ? "text-[#ff9159]" : "text-white/10"
+                }`}
               >
                 {item}
               </span>
             ))}
         </div>
       </div>
-
-      <style jsx>{`
-        /* TOP marquee: right → left */
-        .top-marquee-track {
-          display: flex;
-          width: max-content;
-          animation: scrollRightToLeft 20s linear infinite;
-        }
-
-        /* BOTTOM marquee: left → right */
-        .bottom-marquee-track {
-          display: flex;
-          width: max-content;
-          animation: scrollLeftToRight 25s linear infinite;
-        }
-
-        @keyframes scrollRightToLeft {
-          0% {
-            transform: translateX(0%);
-          }
-          100% {
-            transform: translateX(-50%);
-          }
-        }
-
-        @keyframes scrollLeftToRight {
-          0% {
-            transform: translateX(-33.33%);
-          }
-          100% {
-            transform: translateX(0%);
-          }
-        }
-      `}</style>
     </section>
   );
 };

@@ -30,9 +30,9 @@ export default function Home() {
       <Contact />
 
       {/* Footer */}
-      {/* <footer className="w-full py-8 text-center text-gray-500 text-sm border-t border-white/5 bg-[#121212]">
+      <footer className="w-full py-6 text-center text-gray-500 text-xs border-t border-white/5 bg-[#121212] tracking-widest uppercase">
         <p>© {new Date().getFullYear()} Jeevan Rebeiro. All rights reserved.</p>
-      </footer> */}
+      </footer>
     </main>
   );
 }
