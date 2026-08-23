@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Jeevan Rebeiro — Full Stack Developer with 4+ years of experience specializing in React.js, Next.js, TypeScript, Node.js, and advanced UI animations with GSAP. Building scalable, high-performance SaaS web experiences.",
 
+  applicationName: "Jeevan Rebeiro",
+
   keywords: [
     "Jeevan Rebeiro",
     "Full Stack Developer",
@@ -62,16 +64,19 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/jeev.jpg",
-    shortcut: "/jeev.jpg",
-    apple: "/jeev.jpg",
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "32x32", type: "image/x-icon" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-icon.png",
   },
 
   openGraph: {
     type: "website",
     locale: "en_US",
     url: BASE_URL,
-    siteName: "Jeevan Rebeiro Portfolio",
+    siteName: "Jeevan Rebeiro",
     title: "Jeevan Rebeiro | Full Stack Developer & Frontend Engineer",
     description:
       "Explore the portfolio of Jeevan Rebeiro — building scalable full stack applications with React.js, Next.js, TypeScript, and immersive GSAP-powered UI experiences.",
@@ -98,8 +103,8 @@ export const metadata: Metadata = {
   category: "technology",
 };
 
-// JSON-LD structured data — Person schema
-const jsonLd = {
+// JSON-LD structured data — Person schema & WebSite schema
+const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: "Jeevan Rebeiro",
@@ -133,6 +138,14 @@ const jsonLd = {
   },
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Jeevan Rebeiro",
+  alternateName: ["Jeevan Rebeiro Portfolio", "Jeevan Rebeiro - Full Stack Developer"],
+  url: BASE_URL,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -144,7 +157,9 @@ export default function RootLayout({
         {/* JSON-LD Structured Data */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([personJsonLd, websiteJsonLd]),
+          }}
         />
       </head>
       <body className="min-h-screen bg-[#121212] overflow-x-hidden text-white flex flex-col">

@@ -2,8 +2,6 @@
 User-agent: *
 Allow: /
 
-# Block access to Next.js internals
-Disallow: /_next/
 Disallow: /api/
 
 Sitemap: https://jeevan-rebeiro.vercel.app/sitemap.xml
